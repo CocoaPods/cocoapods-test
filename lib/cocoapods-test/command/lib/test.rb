@@ -28,9 +28,7 @@ module Pod
           end
 
           invalid_count = test_results.count { |result| !result }
-          if invalid_count == 0
-            UI.puts 'Success'.green
-          else
+          if invalid_count > 0
             raise Informative, 'Tests did not pass.'
           end
         end

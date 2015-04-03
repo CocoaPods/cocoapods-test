@@ -21,8 +21,30 @@ module Pod
 
     # @return [true,false] true if the tests pass
     def test
-      UI.puts 'Testing... just kidding'.yellow
+      unless @spec
+        UI.puts "Failed to load #{@spec.name}.".yellow
+        return false
+      end
+
+      if test_specs.empty?
+        UI.puts "There are no test specs in #{@spec.name}.".yellow
+        return false
+      end
+
+      test_specs.each do |spec|
+        UI.puts "Testing #{spec.parent.name}."
+      end
+
+      UI.puts "#{@spec.name} passed testing.".green
       true
+    end
+
+    private
+
+    def test_specs
+      @test_specs ||= [@spec, *@spec.recursive_subspecs].map do |spec|
+        spec.test_specification
+      end.compact
     end
   end
 end
