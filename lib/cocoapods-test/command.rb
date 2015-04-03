@@ -1,1 +1,1 @@
-require 'cocoapods-test/command/test.rb'
+require 'cocoapods-test/command/lib.rb'
