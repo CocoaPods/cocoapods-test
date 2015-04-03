@@ -3,8 +3,9 @@ module Pod
     # @param  [Specification, Pathname, String] spec_or_path
     #         the Specification or the path of the `podspec` file to lint.
     #
-    def initialize(spec_or_path, source_urls)
+    def initialize(spec_or_path, source_urls, local = true)
       @source_urls = source_urls.map { |url| SourcesManager.source_with_name_or_url(url) }.map(&:url)
+
       if spec_or_path.is_a?(Specification)
         @spec = spec_or_path
         @file = @spec.defined_in_file
