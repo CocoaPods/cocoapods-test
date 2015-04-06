@@ -2,6 +2,8 @@
 
 CocoaPods plugin to run tests for a Pod.
 
+:warning: **WARNING**: *This plugin is incomplete and is not yet capable of running tests for a Pod.* :warning:
+
 ## Installation
 
     $ gem install cocoapods-test
